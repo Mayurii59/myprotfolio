@@ -14,7 +14,7 @@ export interface Project {
   featured: boolean;
   imageAlt: string;
   highlights: string[];
-  previewType: "tour" | "healthcare";
+  previewType: "tour" | "healthcare" | "music";
 }
 
 export interface ExperienceItem {
@@ -321,6 +321,42 @@ I believe modern digital products must be both computationally capable and delig
       ],
       previewType: "healthcare",
     },
+    {
+      id: "music-player",
+      title: "Music Player",
+      category: "Full-Stack Web App",
+      tagline: "Modern responsive music player with authentication and audio streaming.",
+      description:
+        "A full-stack music player web application with a modern responsive interface for browsing and playing music. It includes a frontend client and Node.js backend with authentication and music-related functionality.",
+      architectureNotes:
+        "Engineered with a responsive React.js client and a RESTful Node.js/Express.js backend, featuring secure user authentication, MongoDB schemas for audio metadata and user playlists, and dynamic playback controls.",
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JavaScript"],
+      features: [
+        "Modern responsive web client designed for intuitive music browsing and seamless audio playback",
+        "Full-stack Node.js and Express.js RESTful backend architecture with secure endpoints",
+        "User authentication and session management for personalized music experience",
+        "MongoDB database schemas for audio tracks, playlists, and user library management",
+        "Interactive audio controls including play, pause, track skipping, and volume management",
+        "Responsive cross-device layout optimized for mobile, tablet, and desktop viewing",
+      ],
+      stats: [
+        { label: "Frontend", value: "React.js" },
+        { label: "Backend", value: "Node & Express" },
+        { label: "Database", value: "MongoDB" },
+        { label: "Language", value: "JavaScript" },
+      ],
+      githubUrl: "https://github.com/Mayurii59/Music-Player",
+      liveUrl: "https://github.com/Mayurii59/Music-Player",
+      status: "Completed",
+      featured: true,
+      imageAlt: "Music Player web application preview showing audio controls and playlist library",
+      highlights: [
+        "Responsive React.js Music Player & Library Interface",
+        "Node.js & Express.js REST API with Authentication",
+        "MongoDB Database for Audio Tracks & Playlists",
+      ],
+      previewType: "music",
+    },
   ] as Project[],
 
   certifications: [
@@ -408,3 +444,4 @@ I believe modern digital products must be both computationally capable and delig
     { name: "Contact", href: "#contact" },
   ],
 };
+

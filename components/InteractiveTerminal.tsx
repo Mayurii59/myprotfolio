@@ -64,7 +64,8 @@ export default function InteractiveTerminal() {
   },
   "projects": [
     "CityTour Web App",
-    "Dockerised Healthcare Assistant"
+    "Dockerised Healthcare Assistant",
+    "Music Player"
   ]
 }`;
 
@@ -250,3 +251,4 @@ export default function InteractiveTerminal() {
     </div>
   );
 }
+

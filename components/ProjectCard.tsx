@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, Layers, CheckCircle2 } from "lucide-react";
 import { Github } from "@/components/Icons";
 import { Project } from "@/data/portfolio";
-import { CityTourPreview, HealthcarePreview } from "./ProjectPreviews";
+import { CityTourPreview, HealthcarePreview, MusicPlayerPreview } from "./ProjectPreviews";
 
 interface ProjectCardProps {
   project: Project;
@@ -171,8 +171,10 @@ export default function ProjectCard({ project, index, onOpenDetails }: ProjectCa
           <div className="relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]">
             {project.previewType === "tour" ? (
               <CityTourPreview />
-            ) : (
+            ) : project.previewType === "healthcare" ? (
               <HealthcarePreview />
+            ) : (
+              <MusicPlayerPreview />
             )}
           </div>
         </div>

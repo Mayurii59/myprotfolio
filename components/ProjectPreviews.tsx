@@ -10,6 +10,14 @@ import {
   Bot,
   MapPin,
   ShieldAlert,
+  Play,
+  Pause,
+  SkipForward,
+  SkipBack,
+  Volume2,
+  Music,
+  Disc,
+  ListMusic,
 } from "lucide-react";
 
 type RoleType = "tourist" | "admin" | "business" | "student";
@@ -224,6 +232,182 @@ export function HealthcarePreview() {
         <div className="p-2 rounded bg-amber-500/[0.05] border border-amber-500/20 text-[10px] text-amber-300/80 flex items-center gap-1.5">
           <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
           <span>General planning advice; does not replace licensed medical doctors.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function MusicPlayerPreview() {
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [activeTrackIndex, setActiveTrackIndex] = useState<number>(0);
+
+  const playlist = [
+    {
+      title: "Midnight Resonance",
+      artist: "Lo-Fi Beats",
+      duration: "03:42",
+      genre: "Electronic",
+      accent: "text-cyan-400",
+    },
+    {
+      title: "Deep Focus Flow",
+      artist: "Ambient Synth",
+      duration: "04:15",
+      genre: "Coding Chill",
+      accent: "text-teal-400",
+    },
+    {
+      title: "Neon City Pulse",
+      artist: "Cyber Groove",
+      duration: "02:58",
+      genre: "Synthwave",
+      accent: "text-blue-400",
+    },
+  ];
+
+  const currentTrack = playlist[activeTrackIndex];
+
+  return (
+    <div className="w-full rounded-2xl bg-[#09090d] border border-white/[0.08] p-4 font-mono text-xs overflow-hidden">
+      {/* Browser Bar */}
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+          <span className="ml-2 text-[10px] text-zinc-500 font-mono">
+            https://musicplayer.local/library/player
+          </span>
+        </div>
+        <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-400/10 text-cyan-300 border border-cyan-400/20">
+          REACT + NODE.JS
+        </span>
+      </div>
+
+      {/* Main Player Display Box */}
+      <div className="p-3.5 rounded-xl bg-black/60 border border-white/[0.06] space-y-3.5">
+        {/* Track Info & Visualizer */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-teal-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+              <Disc className={`w-5 h-5 ${isPlaying ? "animate-spin" : ""}`} />
+            </div>
+            <div>
+              <div className="font-bold text-white text-xs tracking-tight flex items-center gap-2">
+                <span>{currentTrack.title}</span>
+                <span className="text-[9px] px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-400 border border-white/[0.08]">
+                  {currentTrack.genre}
+                </span>
+              </div>
+              <div className="text-[10px] text-zinc-500 mt-0.5">
+                {currentTrack.artist} • MERN Audio Engine
+              </div>
+            </div>
+          </div>
+
+          {/* Animated Waveform Equalizer */}
+          <div className="flex items-end gap-1 h-6 px-2">
+            {[40, 75, 55, 90, 60, 80, 45].map((h, i) => (
+              <span
+                key={i}
+                className="w-1 rounded-full bg-cyan-400 transition-all duration-300"
+                style={{
+                  height: isPlaying ? `${h}%` : "20%",
+                  opacity: isPlaying ? 0.9 : 0.3,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Scrubber Bar */}
+        <div className="space-y-1">
+          <div className="w-full bg-white/[0.06] rounded-full h-1.5 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-cyan-400 to-teal-400 h-full rounded-full transition-all duration-500"
+              style={{ width: isPlaying ? "58%" : "30%" }}
+            />
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono">
+            <span>{isPlaying ? "02:08" : "01:05"}</span>
+            <span>{currentTrack.duration}</span>
+          </div>
+        </div>
+
+        {/* Playback Controls & Volume */}
+        <div className="flex items-center justify-between pt-1">
+          <div className="flex items-center gap-2 text-zinc-400">
+            <button
+              onClick={() =>
+                setActiveTrackIndex((prev) => (prev - 1 + playlist.length) % playlist.length)
+              }
+              aria-label="Previous track"
+              className="p-1.5 rounded-lg hover:bg-white/[0.06] hover:text-white transition-colors"
+            >
+              <SkipBack className="w-3.5 h-3.5" />
+            </button>
+
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              aria-label={isPlaying ? "Pause" : "Play"}
+              className="p-2 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/30 transition-all shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+            >
+              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+            </button>
+
+            <button
+              onClick={() => setActiveTrackIndex((prev) => (prev + 1) % playlist.length)}
+              aria-label="Next track"
+              className="p-1.5 rounded-lg hover:bg-white/[0.06] hover:text-white transition-colors"
+            >
+              <SkipForward className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2 text-zinc-500 text-[10px]">
+            <Volume2 className="w-3 h-3 text-zinc-400" />
+            <div className="w-14 bg-white/[0.08] rounded-full h-1">
+              <div className="bg-zinc-300 h-full w-[70%] rounded-full" />
+            </div>
+            <span className="text-zinc-400">70%</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Playlist Selector List */}
+      <div className="mt-3 space-y-1.5">
+        <div className="flex items-center justify-between text-[10px] text-zinc-500 px-1">
+          <span className="flex items-center gap-1 text-zinc-400">
+            <ListMusic className="w-3 h-3 text-cyan-400" /> Track Queue ({playlist.length})
+          </span>
+          <span className="text-emerald-400">JWT Auth Session</span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-1.5">
+          {playlist.map((track, idx) => {
+            const isSelected = activeTrackIndex === idx;
+            return (
+              <button
+                key={track.title}
+                onClick={() => {
+                  setActiveTrackIndex(idx);
+                  setIsPlaying(true);
+                }}
+                className={`p-2 rounded-lg text-left transition-all ${
+                  isSelected
+                    ? "bg-cyan-500/10 border border-cyan-500/30 text-white"
+                    : "bg-white/[0.02] border border-white/[0.04] text-zinc-400 hover:bg-white/[0.05]"
+                }`}
+              >
+                <div className="text-[10px] font-bold truncate flex items-center gap-1">
+                  <Music className="w-2.5 h-2.5 text-cyan-400 shrink-0" />
+                  <span className="truncate">{track.title}</span>
+                </div>
+                <div className="text-[9px] text-zinc-500 mt-0.5 truncate">{track.duration}</div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
