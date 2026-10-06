@@ -49,7 +49,7 @@ export default function Certifications() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch"
         >
           {PORTFOLIO_DATA.certifications.map((cert) => {
             const Icon = getIcon(cert.category);
@@ -59,9 +59,9 @@ export default function Certifications() {
               <motion.div
                 key={cert.id}
                 variants={fadeInUp}
-                className={`p-6 rounded-3xl bg-gradient-to-br ${style} bg-[#0e0e13] border backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between`}
+                className={`p-6 rounded-3xl bg-gradient-to-br ${style} bg-[#0e0e13] border backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.02] h-full flex flex-col justify-between`}
               >
-                <div>
+                <div className="flex-1 flex flex-col">
                   {/* Category Pill & Icon */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/[0.08]">

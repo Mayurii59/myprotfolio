@@ -39,9 +39,9 @@ export default function About() {
     },
     {
       title: "Experience",
-      primary: "UI/UX Intern",
+      primary: "UI/UX Designer Intern",
       secondary: "Horizon17 Technology",
-      period: "Jul 2025 – Oct 2025",
+      period: "July 2025 – Present",
       icon: Briefcase,
       color: "text-teal-400",
       borderColor: "border-teal-500/20",
@@ -122,17 +122,19 @@ export default function About() {
                 <p className="text-xs font-mono uppercase tracking-widest text-zinc-400">
                   Core Engineering Pillars
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-stretch">
                   {focusPoints.map((point) => {
                     const Icon = point.icon;
                     return (
                       <div
                         key={point.title}
-                        className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-cyan-500/30 transition-colors"
+                        className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-cyan-500/30 transition-colors h-full flex flex-col justify-between"
                       >
-                        <Icon className="w-4 h-4 text-cyan-400 mb-2" />
-                        <h4 className="text-xs font-semibold text-white mb-1">{point.title}</h4>
-                        <p className="text-[11px] text-zinc-400 leading-normal">{point.desc}</p>
+                        <div>
+                          <Icon className="w-4 h-4 text-cyan-400 mb-2" />
+                          <h4 className="text-xs font-semibold text-white mb-1">{point.title}</h4>
+                        </div>
+                        <p className="text-[11px] text-zinc-400 leading-normal mt-1">{point.desc}</p>
                       </div>
                     );
                   })}
@@ -147,7 +149,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4"
+            className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 items-stretch"
           >
             {statCards.map((card) => {
               const Icon = card.icon;
@@ -155,7 +157,7 @@ export default function About() {
                 <motion.div
                   key={card.title}
                   variants={fadeInUp}
-                  className={`p-6 rounded-2xl bg-gradient-to-br ${card.bgGradient} bg-[#0b0b0e] border ${card.borderColor} backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.01]`}
+                  className={`p-6 rounded-2xl bg-gradient-to-br ${card.bgGradient} bg-[#0b0b0e] border ${card.borderColor} backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.01] h-full flex flex-col justify-between`}
                 >
                   <div className="flex items-start justify-between">
                     <div>

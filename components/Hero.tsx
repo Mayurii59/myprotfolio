@@ -183,7 +183,7 @@ export default function Hero() {
               </div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.06]">
                 <Briefcase className="w-3.5 h-3.5 text-teal-400" />
-                <span>UI/UX Intern @ Horizon17</span>
+                <span>UI/UX Designer Intern @ Horizon17</span>
               </div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.06]">
                 <MapPin className="w-3.5 h-3.5 text-blue-400" />

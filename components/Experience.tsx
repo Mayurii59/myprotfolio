@@ -7,11 +7,8 @@ import {
   Calendar,
   MapPin,
   ExternalLink,
-  CheckCircle2,
-  Layers,
-  Sparkles,
+  Award,
 } from "lucide-react";
-import { Figma } from "@/components/Icons";
 import SectionHeading from "./SectionHeading";
 import { PORTFOLIO_DATA } from "@/data/portfolio";
 import { fadeInUp } from "@/lib/animations";
@@ -19,23 +16,17 @@ import { fadeInUp } from "@/lib/animations";
 export default function Experience() {
   const exp = PORTFOLIO_DATA.experience[0];
 
-  const highlights = [
-    {
-      title: "Design-to-Code Synergy",
-      desc: "Partnered directly with engineering leads to define reusable tokens, UI props, and responsive layouts, preventing visual regression during handoff.",
-      icon: Layers,
-    },
-    {
-      title: "Figma Prototyping & Wireframes",
-      desc: "Designed low-to-high fidelity wireframes and user flow architectures for web application dashboards with high visual polish.",
-      icon: Figma,
-    },
-    {
-      title: "Accessibility Standards (WCAG)",
-      desc: "Championed high-contrast color palettes, accessible touch targets, and consistent semantic typography across digital touchpoints.",
-      icon: Sparkles,
-    },
+  const technologies = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React.js",
+    "Tailwind CSS",
   ];
+
+  const certificateUrl =
+    exp.certificateUrl ||
+    "https://drive.google.com/file/d/1BSbdeSWoIaz4OlEFEr0Z-Urnz1W3zTwe/view?usp=drive_link";
 
   return (
     <section id="experience" className="py-24 sm:py-32 relative bg-black/40">
@@ -44,14 +35,14 @@ export default function Experience() {
           number="02"
           badge="Experience"
           title="Work Experience."
-          subtitle="Hands-on internship experience designing user-friendly enterprise interfaces, building design systems, and improving developer collaboration."
+          subtitle="Hands-on internship experience designing user-friendly interfaces, improving visual consistency, usability, and responsive user experiences."
         />
 
         <div className="max-w-4xl mx-auto">
           {/* Timeline Container */}
-          <div className="relative pl-6 sm:pl-10 border-l-2 border-cyan-500/30 space-y-12">
+          <div className="relative pl-6 sm:pl-10 border-l-2 border-cyan-500/30">
             {/* Timeline Marker Pulse */}
-            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#050505] shadow-[0_0_12px_#06b6d4]" />
+            <div className="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-[#050505] shadow-[0_0_12px_#06b6d4]" />
 
             {/* Main Experience Card */}
             <motion.div
@@ -59,7 +50,7 @@ export default function Experience() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="p-6 sm:p-8 rounded-2xl bg-[#0e0e13] border border-white/[0.08] backdrop-blur-xl relative overflow-hidden transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.15)]"
+              className="p-6 sm:p-8 rounded-3xl bg-[#0e0e13] border border-white/[0.08] backdrop-blur-xl relative overflow-hidden transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_10px_35px_-10px_rgba(6,182,212,0.15)] flex flex-col justify-between"
             >
               {/* Header Info */}
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-white/[0.08]">
@@ -71,7 +62,7 @@ export default function Experience() {
                   <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                     {exp.role}
                   </h3>
-                  <div className="text-lg text-cyan-400 font-medium mt-1 flex items-center gap-2">
+                  <div className="text-base sm:text-lg text-cyan-400 font-medium mt-1.5 flex items-center gap-2">
                     <span>{exp.company}</span>
                     {exp.link && (
                       <a
@@ -88,7 +79,7 @@ export default function Experience() {
                 </div>
 
                 <div className="flex flex-col sm:items-end gap-1.5 text-xs font-mono text-zinc-400">
-                  <div className="flex items-center gap-1.5 text-zinc-300 bg-white/[0.03] px-3 py-1 rounded-md border border-white/[0.06]">
+                  <div className="inline-flex items-center gap-1.5 text-zinc-300 bg-white/[0.03] px-3 py-1.5 rounded-lg border border-white/[0.06]">
                     <Calendar className="w-3.5 h-3.5 text-cyan-400" />
                     <span>{exp.period}</span>
                   </div>
@@ -99,51 +90,53 @@ export default function Experience() {
                 </div>
               </div>
 
-              {/* Responsibilities List */}
-              <div className="mt-6 space-y-3.5">
-                <p className="text-xs font-mono uppercase tracking-widest text-zinc-500">
-                  Key Responsibilities & Deliverables
+              {/* Professional Description */}
+              <div className="py-6 border-b border-white/[0.08]">
+                <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
+                  {exp.description}
                 </p>
-                <div className="space-y-3">
-                  {exp.responsibilities.map((resp, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-1" />
-                      <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
-                        {resp}
-                      </p>
-                    </div>
+              </div>
+
+              {/* Technologies Used Subsection */}
+              <div className="pt-6 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono uppercase tracking-widest text-zinc-400">
+                    Technologies Used
+                  </span>
+                  <span className="text-[10px] font-mono text-zinc-500">
+                    {technologies.length} Core Tools
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="inline-flex items-center h-8 px-3.5 rounded-lg text-xs font-mono bg-white/[0.04] text-zinc-200 border border-white/[0.08] hover:border-cyan-500/30 hover:bg-white/[0.06] transition-colors"
+                    >
+                      {tech}
+                    </span>
                   ))}
                 </div>
               </div>
 
-              {/* Three Impact Callouts */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3 pt-6 border-t border-white/[0.08]">
-                {highlights.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={item.title}
-                      className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]"
-                    >
-                      <Icon className="w-4 h-4 text-teal-400 mb-2" />
-                      <h4 className="text-xs font-semibold text-white mb-1">{item.title}</h4>
-                      <p className="text-[11px] text-zinc-400 leading-normal">{item.desc}</p>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* Action Buttons: View Internship Certificate */}
+              <div className="mt-8 pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Verified Credentials</span>
+                </div>
 
-              {/* Skills Tags */}
-              <div className="mt-6 pt-6 border-t border-white/[0.08] flex flex-wrap items-center gap-2">
-                <span className="text-xs font-mono text-zinc-500 mr-2">Competencies:</span>
-                {exp.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1 rounded-md text-xs font-mono bg-white/[0.04] text-zinc-300 border border-white/[0.08]"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                <a
+                  href={certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-cyan-500 to-teal-500 text-black hover:opacity-95 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-pointer transform active:scale-95"
+                >
+                  <Award className="w-3.5 h-3.5" />
+                  <span>View Internship Certificate</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
             </motion.div>
           </div>

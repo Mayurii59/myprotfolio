@@ -59,7 +59,7 @@ export default function InteractiveTerminal() {
   },
   "internship": {
     "company": "Horizon17 Technology",
-    "role": "UI/UX Intern",
+    "role": "UI/UX Designer Intern",
     "impact": "Figma wireframes, design-to-code, a11y"
   },
   "projects": [

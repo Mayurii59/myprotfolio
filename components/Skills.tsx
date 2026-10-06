@@ -141,25 +141,27 @@ export default function Skills() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
             {areasOfInterest.map((area) => {
               const Icon = area.icon;
               return (
                 <div
                   key={area.title}
-                  className={`p-6 rounded-2xl bg-gradient-to-br ${area.gradient} bg-[#0e0e13] border ${area.borderColor} backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.2)]`}
+                  className={`p-6 rounded-2xl bg-gradient-to-br ${area.gradient} bg-[#0e0e13] border ${area.borderColor} backdrop-blur-md relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.2)] h-full flex flex-col justify-between`}
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] ${area.accentColor}`}>
-                      <Icon className="w-5 h-5" />
+                  <div className="flex-1 flex flex-col">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] ${area.accentColor}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${area.pillBg}`}>
+                        {area.tag}
+                      </span>
                     </div>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${area.pillBg}`}>
-                      {area.tag}
-                    </span>
-                  </div>
 
-                  <h4 className="text-lg font-bold text-white mb-2">{area.title}</h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed font-light">{area.desc}</p>
+                    <h4 className="text-lg font-bold text-white mb-2">{area.title}</h4>
+                    <p className="text-xs text-zinc-400 leading-relaxed font-light">{area.desc}</p>
+                  </div>
                 </div>
               );
             })}
@@ -189,7 +191,7 @@ export default function Skills() {
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch"
         >
           <AnimatePresence>
             {filteredSkills.map((skill) => {
@@ -203,34 +205,36 @@ export default function Skills() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="group p-5 rounded-2xl bg-[#0d0d12] border border-white/[0.08] hover:border-cyan-500/40 hover:bg-[#121218] transition-all duration-300 relative overflow-hidden"
+                  className="group p-5 rounded-2xl bg-[#0d0d12] border border-white/[0.08] hover:border-cyan-500/40 hover:bg-[#121218] transition-all duration-300 relative overflow-hidden h-full flex flex-col justify-between"
                 >
                   {/* Subtle hover gradient */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-cyan-400 group-hover:scale-110 group-hover:border-cyan-500/30 transition-transform">
-                      <Icon className="w-5 h-5" />
+                  <div className="flex-1 flex flex-col">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-cyan-400 group-hover:scale-110 group-hover:border-cyan-500/30 transition-transform">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      {skill.level && (
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-400 border border-white/[0.05]">
+                          {skill.level}
+                        </span>
+                      )}
                     </div>
-                    {skill.level && (
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-400 border border-white/[0.05]">
-                        {skill.level}
+
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                        {skill.name}
+                      </h4>
+                      <span className="text-[10px] font-mono text-zinc-500 uppercase">
+                        {skill.categoryName}
                       </span>
-                    )}
-                  </div>
+                    </div>
 
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
-                      {skill.name}
-                    </h4>
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase">
-                      {skill.categoryName}
-                    </span>
+                    <p className="mt-2 text-xs text-zinc-400 leading-relaxed font-light">
+                      {skill.description}
+                    </p>
                   </div>
-
-                  <p className="mt-2 text-xs text-zinc-400 leading-relaxed font-light">
-                    {skill.description}
-                  </p>
                 </motion.div>
               );
             })}

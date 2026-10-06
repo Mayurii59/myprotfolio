@@ -64,10 +64,10 @@ export default function ProjectCard({ project, index, onOpenDetails }: ProjectCa
         className={`absolute -inset-px rounded-3xl bg-gradient-to-r from-cyan-500/10 via-teal-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10`}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
         {/* Project Content Side */}
-        <div className={`lg:col-span-6 flex flex-col justify-between ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-          <div>
+        <div className={`lg:col-span-6 flex flex-col justify-between h-full ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+          <div className="flex-1">
             {/* Category & Status Pill */}
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xs font-mono uppercase tracking-wider text-cyan-400">
@@ -167,8 +167,8 @@ export default function ProjectCard({ project, index, onOpenDetails }: ProjectCa
         </div>
 
         {/* Interactive Mockup Preview Side */}
-        <div className={`lg:col-span-6 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]">
+        <div className={`lg:col-span-6 flex items-center justify-center h-full ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+          <div className="w-full relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]">
             {project.previewType === "tour" ? (
               <CityTourPreview />
             ) : project.previewType === "healthcare" ? (

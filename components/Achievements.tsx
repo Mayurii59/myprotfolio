@@ -33,7 +33,7 @@ export default function Achievements() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch"
         >
           {PORTFOLIO_DATA.achievements.map((item) => {
             const Icon = getIcon(item.icon);
@@ -41,9 +41,9 @@ export default function Achievements() {
               <motion.div
                 key={item.title}
                 variants={fadeInUp}
-                className="p-6 sm:p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+                className="p-6 sm:p-8 rounded-3xl bg-[#0c0c10] border border-white/[0.08] hover:border-cyan-500/30 transition-all duration-300 relative overflow-hidden h-full flex flex-col justify-between"
               >
-                <div>
+                <div className="flex-1 flex flex-col">
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
                       <Icon className="w-5 h-5" />

@@ -24,9 +24,10 @@ export interface ExperienceItem {
   period: string;
   type: string;
   description: string;
-  responsibilities: string[];
+  responsibilities?: string[];
   skills: string[];
   link?: string;
+  certificateUrl?: string;
 }
 
 export interface EducationItem {
@@ -88,7 +89,7 @@ I believe modern digital products must be both computationally capable and delig
     quickStats: [
       { label: "Education", value: "B.Tech CSE", subtext: "Medi-Caps University" },
       { label: "Academic CGPA", value: "8.26", subtext: "Out of 10.0" },
-      { label: "Internship", value: "UI/UX Intern", subtext: "Horizon17 Tech" },
+      { label: "Internship", value: "UI/UX Designer Intern", subtext: "Horizon17 Tech" },
       { label: "Location", value: "Indore, India", subtext: "Open to Relocate / Remote" },
     ],
   },
@@ -230,19 +231,15 @@ I believe modern digital products must be both computationally capable and delig
   experience: [
     {
       company: "Horizon17 Technology and Sustainability",
-      role: "UI/UX Intern",
+      role: "UI/UX Designer Intern",
       location: "Gurugram, Haryana",
-      period: "Jul 2025 – Oct 2025",
+      period: "July 2025 – Present",
       type: "Internship",
       description:
-        "Contributed to enterprise web platforms by designing wireframes and interactive prototypes, bridging UI design with developer implementation, and elevating accessibility benchmarks.",
-      responsibilities: [
-        "Designed user-friendly interfaces, responsive layouts, and interactive wireframes in Figma for production web applications.",
-        "Collaborated closely with frontend developers to ensure pixel-perfect design-to-code handoff and consistent component styling.",
-        "Contributed to enhancing digital platform accessibility (WCAG principles) and overall usability across varying user personas.",
-        "Refined visual hierarchies, design tokens, typography scales, and interactive states for enterprise workflows.",
-      ],
-      skills: ["Figma", "UI/UX Design", "Wireframing", "Design-to-Code Handoff", "Accessibility", "Design Systems"],
+        "Worked as a UI/UX Designer Intern, contributing to modern and user-focused web interface designs, improving visual consistency, usability, and responsive user experiences.",
+      skills: ["HTML", "CSS", "JavaScript", "React.js", "Tailwind CSS"],
+      certificateUrl:
+        "https://drive.google.com/file/d/1BSbdeSWoIaz4OlEFEr0Z-Urnz1W3zTwe/view?usp=drive_link",
       link: "https://horizon17ww.com",
     },
   ] as ExperienceItem[],
